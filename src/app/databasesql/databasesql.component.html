@@ -1,0 +1,232 @@
+<app-navbar></app-navbar>
+<div style="overflow: auto" class="cont">
+  <div class="headernavbar">
+    <div *ngFor="let x of arraynavbar">
+      <div
+        [style.background-color]="path === x.emri ? 'white' : '#f7f7f7'"
+        style="
+          width: 127px;
+          display: flex;
+
+          align-items: center;
+          height: 50px;
+          justify-content: center;
+        "
+      >
+        <i
+          (click)="clicktenavbari(x)"
+          style="margin-right: 10px"
+          class="{{ x.logo }}"
+        ></i>
+        <p style="margin-top: 10px">{{ x.emri }}</p>
+      </div>
+    </div>
+  </div>
+  <div [style.display]="path == 'Databases' ? 'block' : 'none'">
+    <p
+      style="
+        color: #377796;
+        font-size: 37px;
+        font-weight: 200;
+
+        margin-top: 140px;
+        margin-left: 35px;
+        margin-bottom: 20px;
+      "
+    >
+      Databases
+    </p>
+    <div
+      style="
+        width: 850px;
+        height: 100px;
+        border: 1px black solid;
+        margin-left: 35px;
+        background-color: #f7f7f7;
+      "
+    >
+      <div style="display: flex; color: black">
+        <i
+          style="margin-left: 15px; margin-top: 15px; margin-right: 10px"
+          class="fa-solid fa-database"
+        ></i>
+        <p style="margin-top: 12px">Create database</p>
+        <i
+          style="margin-left: 10px; margin-top: 15px"
+          class="fa-solid fa-circle-info"
+        ></i>
+      </div>
+      <input
+        [(ngModel)]="addDatbase"
+        style="margin-left: 15px; margin-top: 10px"
+      />
+      <select style="height: 22px; width: 170px; margin-left: 20px">
+        <option>latin swedish ci</option>
+      </select>
+      <p
+        style="
+          height: 22px;
+          background-color: #377796;
+          width: 60px;
+          color: white;
+          display: flex;
+          justify-content: center;
+          align-content: center;
+          margin-top: 3px;
+          margin-top: -23px;
+          margin-left: 400px;
+        "
+        (click)="addDatabse()"
+      >
+        Create
+      </p>
+    </div>
+    <div style="display: flex; margin-left: 30px; margin-top: 30px">
+      <div
+        style="
+          width: 100px;
+          background-color: #f7f7f7;
+          display: flex;
+          height: 30px;
+        "
+      >
+        <input style="margin-left: 10px" type="checkbox" />
+        <p style="margin-left: 7px; margin-top: 5px">Check all</p>
+      </div>
+      <div
+        class="binhover"
+        style="
+          display: flex;
+
+          width: 60px;
+          justify-content: center;
+          align-content: center;
+          height: 30px;
+        "
+      >
+        <i
+          style="margin-right: 3px; margin-top: 7px"
+          class="fa-solid fa-trash-can"
+        ></i>
+        <p style="margin-top: 4px">Drop</p>
+      </div>
+    </div>
+    <table style="margin-left: 35px; margin-top: 40px">
+      <thead>
+        <tr style="background-color: #eae9e9; width: 300px; font-size: larger">
+          <td><p>Database</p></td>
+          <td><p>Collation</p></td>
+          <td><p>Action</p></td>
+        </tr>
+      </thead>
+      <tbody>
+        <tr
+          *ngFor="let x of databases; let i = index"
+          [style.background-color]="i % 2 === 0 ? 'white' : ' #eae9e9'"
+        >
+          <td style="display: flex">
+            <input type="checkbox" />
+            <p style="margin-top: 10px">{{ x.name }}</p>
+          </td>
+          <td>latin swedish ci</td>
+          <td>Check privilleges</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div>
+    <div [style.display]="path == 'SQL' ? 'block' : 'none'">
+      <div
+        style="
+          width: 950px;
+          height: auto + 40px;
+          background-color: #eae9e9;
+          margin-left: 30px;
+          margin-top: 130px;
+        "
+      >
+        <p
+          style="
+            font-size: 15px;
+            font-weight: 300;
+
+            margin-left: 10px;
+            margin-top: 20px;
+          "
+        >
+          Run SQL query/queries on server “127.0.0.1”:
+          <i class="fa-solid fa-circle-info"></i>
+        </p>
+        <textarea
+          style="
+            max-width: 750px;
+            min-width: 749px;
+            margin-left: 90px;
+            height: 300px;
+          "
+        ></textarea>
+        <div style="display: flex; margin-top: 20px; margin-bottom: 30px">
+          <div
+            style="
+              background-color: rgb(172, 171, 171);
+              width: 50px;
+              margin-left: 90px;
+              height: 25px;
+              font-weight: 300;
+              display: flex;
+              justify-items: center;
+              justify-content: center;
+            "
+          >
+            Clear
+          </div>
+          <div
+            style="
+              background-color: rgb(172, 171, 171);
+              width: 80px;
+              margin-left: 20px;
+              font-weight: 300;
+              display: flex;
+              justify-items: center;
+              justify-content: center;
+              height: 25px;
+            "
+          >
+            Format
+          </div>
+          <div
+            style="
+              background-color: rgb(172, 171, 171);
+              width: 170px;
+              font-size: 13px;
+              margin-left: 20px;
+              font-weight: 300;
+              display: flex;
+              justify-items: center;
+              justify-content: center;
+              height: 25px;
+              margin-bottom: 50px;
+            "
+          >
+            Get auto-saved query
+          </div>
+          <div
+            style="
+              background-color: #377796;
+              width: 30px;
+              height: 25px;
+              display: flex;
+              justify-content: center;
+              align-content: center;
+              color: white;
+              font-weight: 300;
+              margin-left: 350px;
+            "
+          >
+            Go
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

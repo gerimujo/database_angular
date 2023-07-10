@@ -1,0 +1,344 @@
+<app-navbar></app-navbar>
+<div style="overflow: auto" class="cont">
+  <div class="headernavbar">
+    <div *ngFor="let x of arraynavbar">
+      <div
+        [style.background-color]="
+          path === x.emri || (path == 'new' && x.emri == 'STRUCTURE')
+            ? 'white'
+            : '#f7f7f7'
+        "
+        style="
+          width: 127px;
+          display: flex;
+
+          align-items: center;
+          height: 50px;
+          justify-content: center;
+        "
+      >
+        <i
+          (click)="clicktenavbari(x)"
+          style="margin-right: 10px"
+          class="{{ x.logo }}"
+        ></i>
+        <p style="margin-top: 10px">
+          {{ x.emri }}
+        </p>
+      </div>
+    </div>
+  </div>
+  <div [style.display]="path == 'STRUCTURE' ? 'block' : 'none'">
+    <table style="margin-top: 200px; margin-left: 20px">
+      <thead>
+        <tr style="background-color: #ddd">
+          <td>Table</td>
+          <td style="width: 500px">Action</td>
+          <td>Rows<i class="fa-solid fa-circle-info"></i></td>
+          <td>Type</td>
+          <td>Collation</td>
+        </tr>
+      </thead>
+      <tbody>
+        <tr
+          *ngFor="let x of tabledata; let i = index"
+          [style.background-color]="i % 2 != 0 ? '#ddd' : 'white'"
+        >
+          <td (click)="navigatetotable(x.tableid)">
+            <input type="checkbox" />
+            {{ x.tablename }}
+          </td>
+          <td style="height: 20px">
+            <i class="fa-solid fa-table-columns"></i>
+            Browse
+            <i class="fa-solid fa-pen"></i>
+            Structure
+            <i class="fa-solid fa-magnifying-glass-plus"></i>
+            Search
+            <i class="fa-solid fa-square-plus"></i>
+            Insert
+            <i class="fa-solid fa-trash-can"></i>
+            Empty
+            <i class="fa-solid fa-circle-minus"></i>
+            Drop
+          </td>
+          <td>{{ x.row }}</td>
+          <td>InnoDB</td>
+          <td>latin1_swedish_ci</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <div [style.display]="path == 'SQL' ? 'block' : 'none'">
+    <div
+      style="
+        width: 950px;
+        height: auto + 40px;
+        background-color: #eae9e9;
+        margin-left: 30px;
+        margin-top: 130px;
+      "
+    >
+      <p
+        style="
+          font-size: 15px;
+          font-weight: 300;
+
+          margin-left: 10px;
+          margin-top: 20px;
+        "
+      >
+        Run SQL query/queries on server x
+        <i class="fa-solid fa-circle-info"></i>
+      </p>
+      <textarea
+        style="
+          max-width: 750px;
+          min-width: 749px;
+          margin-left: 90px;
+          height: 300px;
+        "
+      ></textarea>
+      <div style="display: flex; margin-top: 20px; margin-bottom: 30px">
+        <div
+          style="
+            background-color: rgb(172, 171, 171);
+            width: 50px;
+            margin-left: 90px;
+            height: 25px;
+            font-weight: 300;
+            display: flex;
+            justify-items: center;
+            justify-content: center;
+          "
+        >
+          Clear
+        </div>
+        <div
+          style="
+            background-color: rgb(172, 171, 171);
+            width: 80px;
+            margin-left: 20px;
+            font-weight: 300;
+            display: flex;
+            justify-items: center;
+            justify-content: center;
+            height: 25px;
+          "
+        >
+          Format
+        </div>
+        <div
+          style="
+            background-color: rgb(172, 171, 171);
+            width: 170px;
+            font-size: 13px;
+            margin-left: 20px;
+            font-weight: 300;
+            display: flex;
+            justify-items: center;
+            justify-content: center;
+            height: 25px;
+            margin-bottom: 50px;
+          "
+        >
+          Get auto-saved query
+        </div>
+        <div
+          style="
+            background-color: #377796;
+            width: 30px;
+            height: 25px;
+            display: flex;
+            justify-content: center;
+            align-content: center;
+            color: white;
+            font-weight: 300;
+            margin-left: 350px;
+          "
+        ></div>
+      </div>
+    </div>
+  </div>
+  <div style="display: none">
+    <div
+      style="
+        width: 900px;
+        height: 130px;
+        background-color: #f3f3f3;
+        margin-top: 140px;
+        margin-left: 30px;
+      "
+    >
+      <div
+        style="
+          width: 200px;
+          display: flex;
+          position: relative;
+          top: 20px;
+          left: 20px;
+        "
+      >
+        <i
+          style="margin-top: 2px; margin-right: 10px"
+          class="fa-solid fa-square-plus"
+        ></i>
+        <p>Create new Table</p>
+      </div>
+      <div style="margin-top: 20px; margin-left: 20px">
+        <p>Table name</p>
+        <input
+          [(ngModel)]="tablename1"
+          placeholder="Table name"
+          style="height: 20px"
+        />
+      </div>
+      <div style="margin-top: -60px; margin-left: 220px">
+        <p>Number of columns</p>
+        <input style="height: 20px" />
+      </div>
+      <div
+        style="
+          width: 60px;
+          background-color: #377796;
+          color: white;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          height: 25px;
+          margin-top: -25px;
+          margin-left: 410px;
+        "
+      >
+        Create
+      </div>
+    </div>
+  </div>
+  <div [style.display]="path == 'add1' || path == 'add' ? 'block' : 'none'">
+    <div style="width: 1000px; overflow: auto">
+      <div style="margin-top: 130px; display: flex; margin-left: 40px">
+        <p>Table name:</p>
+        <input
+          [(ngModel)]="tablename1"
+          style="margin-top: -4px; height: 20px; margin-left: 8px"
+        />
+        <p style="margin-left: 30px">Add</p>
+        <input
+          [(ngModel)]="numnertoaddcolumn"
+          type="number"
+          min="1"
+          style="margin-top: -4px; height: 20px; margin-left: 8px"
+        />
+        <p style="margin-left: 20px">column(s)</p>
+        <button
+          (click)="concat()"
+          style="margin-top: -7px; margin-left: 10px; height: 30px"
+        >
+          Click
+        </button>
+      </div>
+      <div
+        style="
+          width: 970px;
+          height: 50px;
+          background-color: #f3f3f3;
+          margin-top: 30px;
+        "
+      ></div>
+      <table style="margin-top: 40px">
+        <thead>
+          <tr>
+            <td>Name<i class="fa-solid fa-circle-info"></i></td>
+            <td>Type<i class="fa-solid fa-circle-info"></i></td>
+            <td>Length/Values<i class="fa-solid fa-circle-info"></i></td>
+            <td>Default<i class="fa-solid fa-circle-info"></i></td>
+
+            <td>Comments</td>
+          </tr>
+        </thead>
+        <tbody>
+          <tr
+            *ngFor="let x of arraydataadd; let i = index"
+            [style.background-color]="i % 2 != 0 ? 'white' : '#f3f3f3'"
+          >
+            <td style="height: 70px">
+              <input
+                [(ngModel)]="x.name"
+                style="width: 100px; height: 22px; margin-left: 10px"
+              />
+            </td>
+            <td>
+              <select
+                [(ngModel)]="x.type"
+                style="width: 100px; height: 22px; margin-left: 10px"
+              >
+                <option>INT</option>
+                <option>VARCHAR</option>
+                <option>TEXT</option>
+              </select>
+            </td>
+            <td>
+              <input
+                [(ngModel)]="x.length"
+                style="width: 100px; height: 22px; margin-left: 10px"
+              />
+            </td>
+            <td>
+              <select
+                [(ngModel)]="x.default1"
+                style="width: 100px; height: 22px; margin-left: 10px"
+              >
+                <option>None</option>
+                <option>As defined</option>
+                <option>Null</option>
+              </select>
+              <input
+                [(ngModel)]="x.defaultValue"
+                [style.display]="x.default1 == 'As defined' ? 'block' : 'none'"
+                style="
+                  width: 90px;
+                  height: 17px;
+                  margin-left: 10px;
+                  margin-top: 10px;
+                "
+              />
+            </td>
+
+            <td><textarea></textarea></td>
+          </tr>
+        </tbody>
+      </table>
+      <div style="display: flex">
+        <div
+          style="
+            background-color: rgb(224, 224, 224);
+            width: 120px;
+            height: 25px;
+            color: black;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 20px;
+            margin-left: 200px;
+          "
+        >
+          <p style="margin-top: 10px">Preview SQL</p>
+        </div>
+        <div
+          style="
+            background-color: #377796;
+            width: 50px;
+            height: 25px;
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 20px;
+          "
+        >
+          <p (click)="print()" style="margin-top: 10px">Save</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

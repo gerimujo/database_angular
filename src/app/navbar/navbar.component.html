@@ -1,0 +1,225 @@
+<div>
+  <div
+    style="
+      height: 50px;
+      width: 1250px;
+      border: 1px black solid;
+      position: fixed;
+      top: 0px;
+      left: 0px;
+      background-color: #377796;
+      z-index: 2;
+      display: flex;
+    "
+  >
+    <p style="margin-left: 20px; color: white; margin-top: 20px">PHPMYADMIN</p>
+    <p
+      style="
+        color: white;
+        margin-left: 200px;
+        font-size: 12px;
+        margin-top: 20px;
+      "
+    >
+      Server:127.0.0.1
+    </p>
+  </div>
+  <div
+    style="
+      border: 2px black solid;
+      position: fixed;
+      width: 200px;
+      margin-left: -13px;
+      background-color: rgb(255, 249, 249);
+      top: 50px;
+      overflow: auto;
+      height: 570px;
+    "
+  >
+    <div
+      style="
+        width: 200px;
+        height: 40px;
+        background-color: rgb(236, 234, 234);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      "
+    >
+      <i style="margin-left: 4px" class="fa-solid fa-house-chimney"></i>
+      <i style="margin-left: 20px" class="fa-solid fa-circle-info"></i>
+      <i style="margin-left: 20px" class="fa-solid fa-wrench"></i>
+      <i style="margin-left: 20px" class="fa-solid fa-rotate"></i>
+    </div>
+    <div style="margin-top: 80px; margin-left: 20px">
+      <div
+        style="
+          width: 18px;
+          height: 2px;
+          border-top: 1px black solid;
+
+          position: absolute;
+          margin-top: -18px;
+          margin-left: 7px;
+        "
+      ></div>
+      <i
+        style="
+          color: black;
+          position: absolute;
+          margin-top: -25px;
+          margin-left: 25px;
+        "
+        class="fa-solid fa-database"
+      ></i>
+      <i
+        (click)="navigate()"
+        style="
+          position: absolute;
+          font-size: 10px;
+          color: green;
+          margin-top: -17px;
+          margin-left: 35px;
+        "
+        class="fa-solid fa-circle-plus"
+      ></i>
+      <p
+        (click)="navigate()"
+        style="position: absolute; margin-top: -29px; margin-left: 50px"
+      >
+        New
+      </p>
+      <div>
+        <div class="cont" *ngFor="let x of databses">
+          <div>
+            <i
+              (click)="clickshenj(x.id)"
+              style="color: black"
+              class="{{ x.shenj }}"
+            ></i>
+            <div
+              style="
+                width: 10px;
+                height: 2px;
+                border-top: 1px black solid;
+                margin-top: -10px;
+                position: absolute;
+                margin-left: 15px;
+              "
+            ></div>
+            <i
+              style="
+                color: black;
+                position: absolute;
+                margin-left: 10px;
+                margin-top: 2px;
+              "
+              class="fa-solid fa-database"
+            ></i>
+
+            <p
+              (click)="navigatetodatabase(x.id)"
+              style="margin-top: -20px; margin-left: 49px"
+            >
+              {{ x.name }}
+            </p>
+
+            <div
+              style="
+                width: 2px;
+                height: 20px;
+                border-left: 1px black solid;
+                position: absolute;
+                margin-top: -50px;
+                margin-left: 7px;
+              "
+            ></div>
+            <div
+              style="margin-top: -10px; margin-left: -120px; position: relative"
+              *ngIf="x.shenj == minus"
+            >
+              <div style="margin-left: 142px">
+                <p
+                  style="
+                    position: absolute;
+                    margin-top: -1px;
+                    margin-left: 50px;
+                  "
+                >
+                  New
+                </p>
+                <div
+                  style="
+                    border-left: 1px black solid;
+                    height: 22px;
+                    position: absolute;
+                    margin-top: -7px;
+                    margin-left: 7px;
+                  "
+                ></div>
+                <div
+                  style="
+                    width: 15px;
+                    border-top: 1px black solid;
+                    position: absolute;
+                    margin-left: 9px;
+                    margin-top: 9px;
+                  "
+                ></div>
+                <i
+                  (click)="newtable(x.id)"
+                  style="margin-left: 25px; margin-bottom: 13px; color: black"
+                  class="fa-solid fa-file-circle-plus"
+                ></i>
+
+                <li
+                  style="margin-bottom: 10px; list-style: none; color: black"
+                  *ngFor="let y of x.table"
+                >
+                  <div
+                    style="
+                      height: 80px;
+                      border-left: 1px black solid;
+                      width: 2px;
+                      position: absolute;
+                      margin-top: -47px;
+                      margin-left: -15px;
+                    "
+                  ></div>
+                  <div
+                    style="
+                      position: absolute;
+                      border-top: 1px black solid;
+                      height: 2px;
+                      width: 10px;
+                      margin-left: 13px;
+                      margin-top: 7px;
+                    "
+                  ></div>
+                  <div
+                    style="
+                      position: absolute;
+                      width: 1px;
+                      height: 20px;
+                      border-left: 1px black solid;
+
+                      margin-left: 7px;
+                      margin-top: -15px;
+                    "
+                  ></div>
+                  <i class="{{ y.shenjtab }}"></i>
+                  <i
+                    (click)="gototable(y.tableid)"
+                    style="margin-left: 8px"
+                    class="fa-solid fa-pencil"
+                  ></i>
+                  <ng-container> {{ y.tablename }}</ng-container>
+                </li>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

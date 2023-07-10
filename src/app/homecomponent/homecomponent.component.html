@@ -1,0 +1,159 @@
+<app-navbar></app-navbar>
+<div class="cont">
+  <div class="headernavbar">
+    <div *ngFor="let x of arraynavbar">
+      <div
+        style="
+          width: 127px;
+          display: flex;
+          background-color: #f7f7f7;
+          align-items: center;
+          height: 50px;
+          justify-content: center;
+        "
+      >
+        <i
+          (click)="navigatetopath(x)"
+          style="margin-right: 10px"
+          class="{{ x.logo }}"
+        ></i>
+        <p style="margin-top: 10px">{{ x.emri }}</p>
+      </div>
+    </div>
+  </div>
+  <p
+    style="
+      font-size: 35px;
+      font-weight: 200;
+      position: absolute;
+      top: 150px;
+      left: 60px;
+      color: #377796;
+    "
+  >
+    General settings
+  </p>
+  <div
+    class="hover1"
+    style="
+      width: 520px;
+      height: 40px;
+
+      position: absolute;
+      top: 200px;
+      left: 50px;
+
+      display: flex;
+      align-items: center;
+    "
+  >
+    <i
+      style="margin-left: 18px; margin-right: 20px"
+      class="fa-solid fa-bars"
+    ></i>
+    <p style="margin-right: 10px">Server connection collation:</p>
+    <i class="fa-solid fa-circle-info"></i>
+    <select style="width: 150px; margin-left: 20px">
+      <option value="option1">utf8mb4 unicode ci</option>
+      <option value="option2">utf8mb4 unicode ci</option>
+
+      <option value="option3">utf8mb4 unicode ci</option>
+      <option value="option4">utf8mb4 unicode ci</option>
+    </select>
+  </div>
+  <div
+    class="hover1"
+    style="
+      width: 520px;
+      height: 40px;
+      position: absolute;
+      top: 250px;
+      display: flex;
+      align-items: center;
+      left: 50px;
+    "
+  >
+    <i
+      style="margin-left: 20px; margin-right: 20px"
+      class="fa-solid fa-wrench"
+    ></i>
+    <p>More settings</p>
+  </div>
+  <p
+    style="
+      font-size: 35px;
+      font-weight: 200;
+      position: absolute;
+      top: 300px;
+      left: 60px;
+      color: #377796;
+    "
+  >
+    Appearance settings
+  </p>
+  <div
+    class="hover1"
+    style="
+      width: 520px;
+      height: 40px;
+
+      position: absolute;
+      top: 400px;
+      left: 50px;
+
+      display: flex;
+      align-items: center;
+    "
+  >
+    <i
+      style="margin-right: 20px; margin-left: 20px"
+      class="fa-solid fa-comments"
+    ></i>
+    <p style="margin-right: 20px">Language</p>
+    <i class="fa-solid fa-circle-info"></i>
+    <select style="width: 150px; margin-left: 20px">
+      <option value="option1">English</option>
+      <option value="option2">Albania</option>
+
+      <option value="option3">German</option>
+      <option value="option4">Turkey</option>
+    </select>
+  </div>
+  <div
+    class="hover1"
+    style="
+      width: 520px;
+      height: 100px;
+
+      position: absolute;
+      top: 450px;
+      left: 50px;
+
+      display: flex;
+      align-items: center;
+    "
+  >
+    <i style="margin-left: 20px" class="fa-solid fa-feather-pointed"></i>
+    <select style="width: 150px; margin-left: 30px; height: 25px">
+      <option value="option1">pmahomme</option>
+      <option value="option2">Bootstrap</option>
+
+      <option value="option3">Metro</option>
+      <option value="option4">Original</option>
+    </select>
+    <div
+      style="
+        height: 25px;
+        background-color: #377796;
+        color: white;
+        font-size: 10px;
+        width: 50px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      "
+    >
+      View All
+    </div>
+  </div>
+</div>
